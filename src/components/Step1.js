@@ -1,10 +1,10 @@
 import React from 'react';
-import MainContainer from './MainContainer';
+import Layout from './Layout';
 
 export default function Step1(){
     return (
-        <MainContainer>
+        <Layout>
             Step1
-        </MainContainer>
+        </Layout>
     )
 }

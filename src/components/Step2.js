@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function Step2(){
     return (
-        <div>
+        <Layout>
             <h1>Step2</h1>
-        </div>
+        </Layout>
     )
 }

@@ -5,10 +5,12 @@ import Step2 from './Step2';
 import Step3 from './Step3';
 import Result from './Result';
 import Header from './Header';
+import Typography from '../styles/Typography';
 
 function App() {
   return (
     <>
+      <Typography />
       <Header />
       <Router>
         <Switch>
