@@ -8,6 +8,7 @@ const HeaderStyles = styled.h1`
     font-weight: 700;
     color: #6495ed;
     text-shadow: 1px 1px #0000ff;
+    margin: 0;
 `;
 
 
