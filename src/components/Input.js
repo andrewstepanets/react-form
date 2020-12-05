@@ -1,15 +1,9 @@
 import React, { forwardRef } from 'react';
-import styled from 'styled-components';
+import TextField from "@material-ui/core/TextField";
 
-const InputStyles = styled.input`
-    width: 100%;
-    display: block;
-    margin: 20px 0px;
-    border: 1px solid lightblue;
-`;
 
 export const Input = forwardRef((props, ref) => {
-    return <InputStyles inputRef={ref} {...props} />
+    return <TextField variant="outlined" margin="normal" inputRef={ref} fullWidth {...props} />
 })
 
 export default Input;
