@@ -3,11 +3,13 @@ import styled from 'styled-components';
 
 const InputStyles = styled.input`
     width: 100%;
-    margin-top: 10px;
+    display: block;
+    margin: 20px 0px;
+    border: 1px solid lightblue;
 `;
 
 export const Input = forwardRef((props, ref) => {
-    return <InputStyles {...props} inputRef={ref} />
+    return <InputStyles inputRef={ref} {...props} />
 })
 
 export default Input;
