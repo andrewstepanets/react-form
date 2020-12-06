@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import Layout from './Layout';
 import styled from 'styled-components';
 import { MdPublic } from 'react-icons/md';
@@ -19,13 +20,21 @@ const StepStyles = styled.h2`
 // using yup
 
 const schema = yup.object().shape({
-    firstName: yup.string().matches(/^([^0-9]*)$/, "First name should not contain numbers").required("First name is a required field"),
-    lastName: yup.string().matches(/^([^0-9]*)$/, "Last name should not contain numbers").required("Last name is a required field"),
+                    firstName: yup
+                                .string()
+                                .matches(/^([^0-9]*)$/, "First name should not contain numbers")
+                                .required("First name is a required field"),
+                    lastName: yup
+                                .string()
+                                .matches(/^([^0-9]*)$/, "Last name should not contain numbers")
+                                .required("Last name is a required field"),
 
 })
 
 
 export default function Step1() {
+
+    const history = useHistory();
 
     const { register, handleSubmit, errors } = useForm({
         mode: "onBlur",
@@ -33,7 +42,7 @@ export default function Step1() {
     })
 
     const onSubmit = (data) => {
-        console.log(data);
+        history.push('/step2')
     }
 
     return (
@@ -42,8 +51,22 @@ export default function Step1() {
                 <MdPublic /> Step 1
             </StepStyles>
             <Form onSubmit={handleSubmit(onSubmit)}>
-                <Input ref={register} id="firstName" type="text" label="First Name" name="firstName" error={!!errors.firstName} helperText={errors?.firstName?.message}/>
-                <Input ref={register} id="lastName" type="text" label="Last Name" name="lastName" error={!!errors.lastName} helperText={errors?.lastName?.message}/>
+                <Input 
+                    ref={register} 
+                    id="firstName" 
+                    type="text" 
+                    label="First Name" 
+                    name="firstName" 
+                    error={!!errors.firstName} 
+                    helperText={errors?.firstName?.message}/>
+                <Input 
+                    ref={register}
+                    id="lastName"
+                    type="text" 
+                    label="Last Name" 
+                    name="lastName" 
+                    error={!!errors.lastName} 
+                    helperText={errors?.lastName?.message}/>
                 <PrimaryButton>Next</PrimaryButton>
             </Form>
         </Layout>
