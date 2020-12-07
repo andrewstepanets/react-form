@@ -14,11 +14,10 @@ function App() {
       <Header />
       <Router>
         <Switch>
-          <Route exact path='/' component={Step1}/>
-          <Route path='/step2' component={Step2}/>
-          <Route path='/step3' component={Step3}/>
-          <Route path='/result' component={Result}/>
-          
+          <Route exact path="/" component={Step1} />
+          <Route path="/step2" component={Step2} />
+          <Route path="/step3" component={Step3} />
+          <Route path="/result" component={Result} />
         </Switch>
       </Router>
     </>
