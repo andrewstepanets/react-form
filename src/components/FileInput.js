@@ -1,5 +1,16 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Paper,
+} from '@material-ui/core';
+import { CloudUpload, InsertDriveFile } from '@material-ui/icons';
+import Dropzone from 'react-dropzone';
+
+/*eslint-disable */
 
 export default function FileInput({ control, name }) {
   return (
