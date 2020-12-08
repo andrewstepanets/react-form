@@ -4,7 +4,9 @@ import Layout from './Layout';
 export default function Step3() {
   return (
     <Layout>
-      <h1>Step3</h1>
+      <StepStyles>
+        <MdPublic /> Step 3
+      </StepStyles>
     </Layout>
   );
 }

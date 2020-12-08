@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState } from 'react';
 
 const DataContext = createContext();
-
-export const DataProvider = ({ children }) => {
+/*eslint-disable */
+export function DataProvider({ children }) {
   const [data, setData] = useState({});
 
   const setValues = (values) => {
@@ -17,6 +17,6 @@ export const DataProvider = ({ children }) => {
       {children}
     </DataContext.Provider>
   );
-};
+}
 
 export const useData = () => useContext(DataContext);
