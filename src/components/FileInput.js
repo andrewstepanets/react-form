@@ -5,14 +5,33 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  makeStyles,
   Paper,
 } from '@material-ui/core';
 import { CloudUpload, InsertDriveFile } from '@material-ui/icons';
 import Dropzone from 'react-dropzone';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: '#eee',
+    textAlign: 'center',
+    cursor: 'pointer',
+    color: '#333',
+    padding: '10px',
+    marginTop: '20px',
+  },
+  icon: {
+    marginTop: '16px',
+    color: '#888',
+    fontSize: '42px',
+  },
+}));
+
 /*eslint-disable */
 
 export default function FileInput({ control, name }) {
+
+    const styles = useStyles();
   return (
     <Controller
       control={control}
@@ -22,8 +41,8 @@ export default function FileInput({ control, name }) {
         <>
           <Dropzone onDrop={onChange}>
             {({ getRootProps, getInputProps }) => (
-              <Paper variant="outlined" {...getRootProps()}>
-                <CloudUpload />
+              <Paper className={styles.root} variant="outlined" {...getRootProps()}>
+                <CloudUpload className={styles.icon}/>
                 <input {...getInputProps()} name={name} onBlur={onBlur} />
                 <p>Drag 'n' drop files here, or click to select files</p>
               </Paper>

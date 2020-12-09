@@ -11,12 +11,16 @@ import Input from './Input';
 import Form from './Form';
 import Layout from './Layout';
 import PrimaryButton from './PrimaryButton';
+import { useData } from './DataContext';
 
 const StepStyles = styled.h2`
   font-size: 2rem;
   display: flex;
   align-items: center;
 `;
+
+/*eslint-disable */
+
 
 // form validation
 // using yup
@@ -39,7 +43,15 @@ const normalizePhoneNumber = (value) => {
 export default function Step2() {
   const history = useHistory();
 
+  // check form validation
+  const { data, setValues } = useData();
+
   const { register, handleSubmit, errors, watch } = useForm({
+    defaultValues: {
+      email: data.email,
+      hasPhone: data.hasPhone,
+      phoneNumber: data.phoneNumber,
+    },
     mode: 'onBlur',
     resolver: yupResolver(schema),
   });
@@ -48,6 +60,7 @@ export default function Step2() {
 
   const onSubmit = (data) => {
     history.push('/step3');
+    setValues(data);
   };
 
   return (
@@ -68,7 +81,13 @@ export default function Step2() {
         />
         <FormControlLabel
           control={
-            <Checkbox name="hasPhone" inputRef={register} color="primary" />
+            <Checkbox
+              defaultValue={data.hasPhone}
+              defaultChecked={data.hasPhone}
+              name="hasPhone"
+              inputRef={register}
+              color="primary"
+            />
           }
           label="Do you have a phone"
         />

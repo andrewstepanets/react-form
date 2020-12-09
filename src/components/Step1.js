@@ -9,6 +9,9 @@ import Form from './Form';
 import Input from './Input';
 import PrimaryButton from './PrimaryButton';
 import Layout from './Layout';
+import { useData } from './DataContext';
+
+/*eslint-disable */
 
 const StepStyles = styled.h2`
   font-size: 2rem;
@@ -33,13 +36,18 @@ const schema = yup.object().shape({
 export default function Step1() {
   const history = useHistory();
 
+  // check form validation
+  const { data, setValues } = useData();
+
   const { register, handleSubmit, errors } = useForm({
+    defaultValues: { firstName: data.firstName, lastName: data.lastName },
     mode: 'onBlur',
     resolver: yupResolver(schema),
   });
 
   const onSubmit = (data) => {
     history.push('/step2');
+    setValues(data);
   };
 
   return (
