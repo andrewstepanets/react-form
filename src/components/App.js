@@ -4,17 +4,17 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
-// import Result from './Result';
+import Result from './Result';
 import Header from './Header';
 import Typography from '../styles/Typography';
 
 /*eslint-disable */
 
-const Result = () => (
-  <>
-    <Link to="/">Start Over</Link>
-  </>
-);
+// const Result = () => (
+//   <>
+//     <Link to="/">Start Over</Link>
+//   </>
+// );
 
 function App() {
   return (
