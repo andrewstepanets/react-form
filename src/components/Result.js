@@ -14,6 +14,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import { InsertDriveFile } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import Layout from './Layout';
@@ -30,9 +31,19 @@ const FileStyles = styled.div`
   margin-bottom: 1rem;
 `;
 
+const useStyles = makeStyles({
+  root: {
+    marginBottom: '30px',
+  },
+  table: {
+    marginBottom: '30px',
+  },
+});
+
 /*eslint-disable */
 
 export default function Result() {
+  const styles = useStyles();
   const { data } = useData();
   const entries = Object.entries(data).filter((entry) => entry[0] !== 'files');
   const { files } = data;
@@ -42,8 +53,8 @@ export default function Result() {
       <StepStyles>
         <MdAssignmentTurnedIn /> Form Values
       </StepStyles>
-      <TableContainer component={Paper}>
-        <Table>
+      <TableContainer className={styles.root} component={Paper}>
+        <Table className={styles.table}>
           <TableHead>
             <TableRow>
               <TableCell>Field</TableCell>
