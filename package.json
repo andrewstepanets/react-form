@@ -29,7 +29,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "netlify": "netlify dev"
   },
   "eslintConfig": {
     "extends": [
@@ -60,6 +61,8 @@
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "netlify-cli": "^2.69.6",
+    "netlify-lambda": "^2.0.1",
     "prettier": "^2.2.1"
   }
 }

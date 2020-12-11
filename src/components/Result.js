@@ -17,6 +17,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import { InsertDriveFile } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import Layout from './Layout';
 import { useData } from './DataContext';
 
@@ -31,12 +32,29 @@ const FileStyles = styled.div`
   margin-bottom: 1rem;
 `;
 
+const SubmitButton = styled.button`
+  margin: 16px 0;
+  width: 100%;
+  padding: 10px 0;
+  background: #8d33ff;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  border: 1px solid #8d33ff;
+  border-radius: 5px;
+  transition: all 0.4s ease;
+  &:hover {
+    background: white;
+    color: #8d33ff;
+  }
+`;
+
 const useStyles = makeStyles({
   root: {
-    marginBottom: '30px',
+    marginBottom: '0px',
   },
   table: {
-    marginBottom: '30px',
+    marginBottom: '0px',
   },
 });
 
@@ -47,6 +65,38 @@ export default function Result() {
   const { data } = useData();
   const entries = Object.entries(data).filter((entry) => entry[0] !== 'files');
   const { files } = data;
+
+  const onSubmit =  async () => {
+
+
+    const formData = new FormData();
+
+
+    if(data.files) {
+      data.files.forEach(file => {
+        formData.append("files", file, file.name)
+      })
+    }
+
+    entries.forEach(entry => {
+      formData.append(entry[0], entry[1])
+    })
+
+    // console.log(data.files);
+    // console.log(entries);
+    // console.log(formData.files);
+    // console.log(formData.files);
+
+    const res = await fetch("http://localhost:4000", {
+      method: "POST",
+      body: formData
+    })
+
+    if(res.status === 200) {
+      Swal.fire("Great job!", "You've passed the challenge", "success")
+    }
+
+  }
 
   return (
     <Layout>
@@ -92,6 +142,7 @@ export default function Result() {
           </>
         )
       }
+      <SubmitButton onClick={onSubmit}>Submit</SubmitButton>
       <Link to="/">Start Over</Link>
     </Layout>
   );

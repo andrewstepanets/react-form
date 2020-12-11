@@ -8,6 +8,7 @@ const LayoutStyles = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+/* eslint-disable */
 
 export default function Layout({ children, ...props }) {
   return <LayoutStyles {...props}>{children}</LayoutStyles>;

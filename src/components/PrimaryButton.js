@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ButtonStyled = styled.button`
-  margin-top: 16px;
+  margin: 16px 0;
   width: 100%;
-  padding: 20px 0;
+  padding: 10px 0;
   background: #8d33ff;
   color: white;
   font-size: 2rem;
@@ -17,6 +17,8 @@ const ButtonStyled = styled.button`
     color: #8d33ff;
   }
 `;
+
+/*eslint-disable */
 
 export default function PrimaryButton({ children, props }) {
   return <ButtonStyled {...props}>{children}</ButtonStyled>;
