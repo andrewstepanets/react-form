@@ -12,14 +12,16 @@ const transporter = nodemailer.createTransport({
 });
 
 exports.handler = async (event, context) => {
+  //   console.log(event.body);
+
   // Test send an e-mail
   const info = await transporter.sendMail({
     from: 'My form <form@example.com>',
     to: 'admin@example.com',
     subject: 'New form filled',
-    html: `<p>The new form was filled!</p>`,
+    html: `<p>Hello!</p>`,
   });
-  console.log(info);
+  //   console.log(info);
   return {
     statusCode: 200,
     body: JSON.stringify(info),

@@ -66,7 +66,7 @@ export default function Result() {
   const entries = Object.entries(data).filter((entry) => entry[0] !== 'files');
   const { files } = data;
 
-  const onSubmit =  async () => {
+  async function onSubmit(e) {
 
 
     const formData = new FormData();
@@ -82,18 +82,29 @@ export default function Result() {
       formData.append(entry[0], entry[1])
     })
 
+
+    console.log(data);
     // console.log(data.files);
-    // console.log(entries);
+    console.log(entries);
     // console.log(formData.files);
     // console.log(formData.files);
 
-    const res = await fetch("http://localhost:4000", {
+    const res = await fetch(`http://localhost:8888/.netlify/functions/sendForm`, {
       method: "POST",
-      body: formData
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: data
     })
 
     if(res.status === 200) {
-      Swal.fire("Great job!", "You've passed the challenge", "success")
+      // Swal.fire("Great job!", "You've passed the challenge", "success")
+      // Swal.fire("Good job!", "You clicked the button!", "success").then(function () {
+      //   location.reload();
+      // });
+      Swal.fire("Good job!", "You clicked the button!", "success").then(function () {
+        location.href = "/";
+      });
     }
 
   }
