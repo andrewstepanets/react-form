@@ -5,9 +5,9 @@ function generateEmail({ firstName, lastName, email, phoneNumber = '1' }) {
         <div>
             <h2>Filled Form</h2>
             <p>
-                <span>${firstName}</span>
-                <span>${lastName}</span>
-                <span>${email}</span>
+                <span>${firstName}</span><br>
+                <span>${lastName}</span><br>
+                <span>${email}</span><br>
                 <span>${phoneNumber}</span>
             </p>
         </div>
@@ -34,7 +34,6 @@ exports.handler = async (event, context) => {
     subject: 'New form filled',
     html: generateEmail(body),
   });
-  //   console.log(info);
   return {
     statusCode: 200,
     body: JSON.stringify({ message: 'Success' }),

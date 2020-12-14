@@ -83,13 +83,6 @@ export default function Result() {
     })
 
 
-    console.log(JSON.stringify(data));
-    console.log(data);
-    // console.log(data.files);
-    console.log(entries);
-    // console.log(formData.files);
-    // console.log(formData.files);
-
     const res = await fetch(`http://localhost:8888/.netlify/functions/sendForm`, {
       method: "POST",
       headers: {
