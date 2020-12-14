@@ -83,6 +83,7 @@ export default function Result() {
     })
 
 
+    console.log(JSON.stringify(data));
     console.log(data);
     // console.log(data.files);
     console.log(entries);
@@ -94,14 +95,11 @@ export default function Result() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: data
+      body: JSON.stringify(data)
     })
 
     if(res.status === 200) {
       // Swal.fire("Great job!", "You've passed the challenge", "success")
-      // Swal.fire("Good job!", "You clicked the button!", "success").then(function () {
-      //   location.reload();
-      // });
       Swal.fire("Good job!", "You clicked the button!", "success").then(function () {
         location.href = "/";
       });

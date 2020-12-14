@@ -1,5 +1,19 @@
 const nodemailer = require('nodemailer');
 
+function generateEmail({ firstName, lastName, email, phoneNumber = '1' }) {
+  return `
+        <div>
+            <h2>Filled Form</h2>
+            <p>
+                <span>${firstName}</span>
+                <span>${lastName}</span>
+                <span>${email}</span>
+                <span>${phoneNumber}</span>
+            </p>
+        </div>
+    `;
+}
+
 // create a transport for nodemailer
 
 const transporter = nodemailer.createTransport({
@@ -12,18 +26,17 @@ const transporter = nodemailer.createTransport({
 });
 
 exports.handler = async (event, context) => {
-  //   console.log(event.body);
-
+  const body = JSON.parse(event.body);
   // Test send an e-mail
   const info = await transporter.sendMail({
     from: 'My form <form@example.com>',
     to: 'admin@example.com',
     subject: 'New form filled',
-    html: `<p>Hello!</p>`,
+    html: generateEmail(body),
   });
   //   console.log(info);
   return {
     statusCode: 200,
-    body: JSON.stringify(info),
+    body: JSON.stringify({ message: 'Success' }),
   };
 };
