@@ -83,7 +83,15 @@ export default function Result() {
     })
 
 
-    const res = await fetch(`http://localhost:8888/.netlify/functions/sendForm`, {
+    const message = `${data.firstName}  ${data.lastName} ${data.email}  ${data.phoneNumber}`
+    // const res = await fetch(`http://localhost:8888/.netlify/functions/sendForm`, {
+    //   method: "POST",
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(data)
+    // })
+    const res = await fetch(`https://api.telegram.org/bot${process.env.REACT_APP_TELEGRAM_TOKEN}/sendMessage?chat_id=${process.env.REACT_APP_TELEGRAM_CHAT_ID}&text=${message}`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
